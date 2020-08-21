@@ -1,0 +1,9 @@
+#!/bin/zsh
+
+if [ "$#" -ne 2 ] || [ -z "$1" ]
+ then
+   echo "usage: schillersay [string] [file]"
+   exit 1
+fi
+
+convert SchillerBlank.png -size 534x235 -background none -font Raleway-ExtraBold.ttf -fill "#042B66" caption:"$1" -geometry +420+120 -composite $2
