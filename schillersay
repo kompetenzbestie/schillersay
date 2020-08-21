@@ -1,9 +1,30 @@
-#!/bin/zsh
+#!/bin/sh
 
-if [ "$#" -ne 2 ] || [ -z "$1" ]
+schiller1 () {
+  convert blank_1.png -size 590x260 -background none -font RalewayUnicode.ttf -fill "#042B66" caption:"$1" -geometry +420+120 -composite "$2"
+}
+
+schiller2 () {
+  convert blank_2.png -size 1100x1000 -background none -font Helvetica -fill "#FFFFFF" caption:"$1" -geometry +100+100 -composite "$2"
+}
+
+espondd () {
+  convert blank_3.png -size 420x250 -background none -font Helvetica -fill "#042B66" caption:"$1" -geometry +460+125 -composite "$2"
+}
+
+usage () {
+  echo "usage: schillersay [string] [-f 012] [-o file]\n\nCurrently avaiable formats:\n0\tSchiller Quote\n1\tSchiller Speech\n2\tEsponda"
+  exit 1
+}
+
+if [ "$#" -ne 5 ] || [ -z "$1" ] || [ "$2" != -f ] || [ "$4" != -o ]
  then
-   echo "usage: schillersay [string] [file]"
-   exit 1
+    usage
 fi
 
-convert SchillerBlank.png -size 534x235 -background none -font Raleway-ExtraBold.ttf -fill "#042B66" caption:"$1" -geometry +420+120 -composite $2
+case "$3" in
+  0) schiller1 "$1" "$5" ;;
+  1) schiller2 "$1" "$5" ;;
+  2) espondd "$1" "$5" ;;
+  *) usage ;;
+esac
