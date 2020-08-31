@@ -13,7 +13,7 @@ espondd () {
 }
 
 usage () {
-  printf "usage: schillersay [string] [-f 012] [-o file]\n\nCurrently avaiable formats:\n0\tSchiller Quote\n1\tSchiller Speech\n2\tEsponda"
+  printf "usage: schillersay [string] [-f 012] [-o file]\n\nCurrently avaiable formats:\n0\tSchiller Quote\n1\tSchiller Speech\n2\tEsponda\n"
   exit 1
 }
 
